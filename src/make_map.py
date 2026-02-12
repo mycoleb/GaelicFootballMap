@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from pathlib import Path
 import math
@@ -58,7 +58,7 @@ def build_map(df: pd.DataFrame) -> folium.Map:
               Members: {int(members) if pd.notna(members) else 'NA'}<br/>
               Performance: {performance if pd.notna(performance) else 'NA'}
             </div>
-            \"\"\"
+            """
 
             folium.CircleMarker(
                 location=[float(r["lat"]), float(r["lon"])],
@@ -94,7 +94,7 @@ def build_map(df: pd.DataFrame) -> folium.Map:
           Members: {int(members) if pd.notna(members) else 'NA'}<br/>
           Performance: {performance if pd.notna(performance) else 'NA'}
         </div>
-        \"\"\"
+        """
 
         folium.CircleMarker(
             location=[float(r["lat"]), float(r["lon"])],
