@@ -1,0 +1,25 @@
+# Core data + wrangling
+pandas>=2.1
+numpy>=1.26
+
+# Geospatial stack
+geopandas>=0.14
+shapely>=2.0
+pyproj>=3.6
+fiona>=1.9
+
+# Interactive mapping
+folium>=0.15
+branca>=0.7
+
+# Optional: geocoding club addresses -> lat/lon (if you don't already have coordinates)
+geopy>=2.4
+
+# Optional: fetch data from APIs / web
+requests>=2.31
+
+# Visualization helpers (useful for legends, quick plots, etc.)
+matplotlib>=3.8
+
+# Optional: filters in Jupyter (dropdowns for province/league)
+ipywidgets>=8.1
