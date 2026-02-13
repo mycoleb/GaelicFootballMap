@@ -9,16 +9,16 @@ REQUIRED_COLS = [
 
 def load_clubs(csv_path: str | Path) -> pd.DataFrame:
     csv_path = Path(csv_path)
+
     if not csv_path.exists():
-        raise FileNotFoundError(f\"Missing data file: {csv_path}\")
+        raise FileNotFoundError(f"Missing data file: {csv_path}")
 
     df = pd.read_csv(csv_path)
 
     missing = [c for c in REQUIRED_COLS if c not in df.columns]
     if missing:
-        raise ValueError(f\"CSV missing required columns: {missing}\")
+        raise ValueError(f"CSV missing required columns: {missing}")
 
-    # Basic cleanup
     df["province"] = df["province"].astype(str).str.strip()
     df["league"] = df["league"].astype(str).str.strip()
     df["members"] = pd.to_numeric(df["members"], errors="coerce")

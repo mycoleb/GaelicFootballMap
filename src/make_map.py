@@ -12,8 +12,9 @@ from utils.data import load_clubs
 ROOT = Path(__file__).resolve().parents[1]
 DATA_CSV = ROOT / "data" / "raw" / "gaa_clubs.csv"
 OUT_HTML = ROOT / "outputs" / "maps" / "gaa_clubs_map.html"
-
+print("start of file")
 def radius_from_members(members: float) -> float:
+    print("start of radius_from_members")
     # Smoothly scale marker radius; tweak to taste.
     # Ensures small clubs still visible.
     if members is None or (isinstance(members, float) and math.isnan(members)):
@@ -21,6 +22,7 @@ def radius_from_members(members: float) -> float:
     return max(5, min(22, 4 + math.sqrt(float(members)) / 3))
 
 def build_map(df: pd.DataFrame) -> folium.Map:
+    
     print("entering build_map function")
     # Center map on median point (robust-ish)
     center_lat = float(df["lat"].median())
@@ -69,7 +71,9 @@ def build_map(df: pd.DataFrame) -> folium.Map:
                 fill_opacity=0.85,
                 weight=2,
                 popup=folium.Popup(popup_html, max_width=320),
-                tooltip=f\"{r['club_name']} ({r['county']})\",
+                tooltip=f"{r['club_name']} ({r['county']})",
+
+
             ).add_to(cluster)
 
         cluster.add_to(fg)
@@ -105,7 +109,8 @@ def build_map(df: pd.DataFrame) -> folium.Map:
             fill_opacity=0.85,
             weight=2,
             popup=folium.Popup(popup_html, max_width=320),
-            tooltip=f\"{r['club_name']} ({r['county']})\",
+            tooltip=f"{r['club_name']} ({r['county']})",
+
         ).add_to(all_cluster)
 
     all_cluster.add_to(all_fg)
@@ -115,6 +120,7 @@ def build_map(df: pd.DataFrame) -> folium.Map:
     return m
 
 def main() -> None:
+    print("start of main")
     df = load_clubs(DATA_CSV)
 
     # Basic sanity checks
